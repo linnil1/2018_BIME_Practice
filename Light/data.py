@@ -40,6 +40,12 @@ line_data = np.array("""
 line_text = "T5燈管間的水平距離(cm)"
 reflect_text = ["無反光板", "裝反光板"]
 
+another_data = np.array("""
+1281 712 537 576 652 551
+13.65 15.29 84.71 52.72 15.29 84.71
+19.596 9.086 3.3572 6.9353 7.9326 2.7841""".split(), dtype=np.float).reshape(3, 6)
+another_data = np.vstack([another_data[0] * another_data[1] / 1000, another_data[2]])
+
 # this function modified from bending.py
 def linearReg(x, y):
     x = np.array(x)

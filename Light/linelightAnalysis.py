@@ -29,11 +29,12 @@ for j in range(3):
 ax2.set_title(dis_name[1] + " vs 距離 \nwith " + line_text + " and 反光板")
 ax2.set_ylabel(dis_name[1])
 ax2.set_xlabel(dis_xname)
+ax1.legend()
+ax2.legend()
 
 plt.savefig("linelightAnalysis.png")
 plt.show()
 
-"""
 def plotOne(x, y, name):
     text, fit_y = analysisOne(x, y)
     print(name)
@@ -52,4 +53,3 @@ plt.legend()
 plt.xticks(dis)
 plt.savefig("linelightAnalysis_linear.png")
 plt.show()
-"""
