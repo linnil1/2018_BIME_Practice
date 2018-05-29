@@ -29,6 +29,17 @@ dis_xname = "燈源與光譜儀距離 (cm)"
 amp = np.array("0.51	0.78	0.59	0.58	0.72".split(), dtype=np.float)
 amptext = "電流值(A)"
 
+line_dis = np.array([5, 10, 15])
+line_data = np.array("""
+65.807 58.514 50.961
+39.968 37.335 34.325
+25.660 27.495 25.884
+92.608 84.910 81.175
+79.161 74.131 67.763
+63.562 62.150 61.600""".split(), dtype=np.float).reshape(2, 3, 3)
+line_text = "T5燈管間的水平距離(cm)"
+reflect_text = ["無反光板", "裝反光板"]
+
 # this function modified from bending.py
 def linearReg(x, y):
     x = np.array(x)
