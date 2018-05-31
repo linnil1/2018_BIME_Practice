@@ -81,11 +81,11 @@ rank = np.argsort([int(re.findall(r"\d+", m[0]['name'])[0]) \
 meta = meta[rank]
 data = data[rank]
 
+
 # number = 6
 plt.figure(figsize=(15, 9))
 plt.suptitle("Cyclic Voltammetry")
 plt.subplots_adjust(left=0.07, right=0.97,top=0.92, bottom=0.05, wspace=0.25)
-alltext = []
 for i in range(6):
     plt.subplot(2, 3, i + 1)
     plt.title(meta[i][0]['name'].replace("mvs", "mV/s"))
@@ -95,4 +95,24 @@ for i in range(6):
     plt.gca().invert_xaxis()
 
 plt.savefig('cv_ori.png')
+plt.show()
+
+plt.figure(figsize=(15, 9))
+plt.suptitle("Cyclic Voltammetry")
+plt.subplots_adjust(left=0.07, right=0.97,top=0.92, bottom=0.05, wspace=0.25)
+for i in range(5):
+    plt.subplot(2, 3, i + 1)
+    plt.title(meta[i][0]['name'].replace("mvs", "mV/s"))
+    plt.xlabel(meta[i][0]['cols'][0])
+    plt.ylabel(meta[i][0]['cols'][1])
+    data_len = meta[i][0]['len']
+    plt.plot(data[i, data_len[-3]:data_len[-1], 0],
+             data[i, data_len[-3]:data_len[-1], 1])
+    for m in meta[i][-2:]:
+        plt.plot(float(m['Ep'][:-1]), float(m['ip'][:-1]), 'x')
+        plt.text(float(m['Ep'][:-1]), float(m['ip'][:-1]),
+                       m['Ep'] + ' , ' + m['ip'])
+    plt.gca().invert_xaxis()
+
+plt.savefig('cv_value.png')
 plt.show()
