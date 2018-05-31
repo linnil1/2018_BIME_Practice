@@ -51,16 +51,17 @@ plt.subplots_adjust(left=0.07, right=0.97, bottom=0.05, wspace=0.25)
 alltext = []
 for i in range(5):
     plt.subplot(2, 3, i + 1)
-    text = "Fe3-: " + meta[i][0]['3-'] + "ml, "
-    text += "Fe4-: " + meta[i][0]['4-'] + "ml"
+    text = "赤血鹽: " + meta[i][0]['3-'] + "mM, "
+    text += "黃血鹽: " + meta[i][0]['4-'] + "mM"
+
     alltext.append(text)
     plt.title(text)
     plt.xlabel(meta[i][1][0])
     plt.ylabel(meta[i][1][1])
     plt.plot(data[i, ::5, 0], data[i, ::5, 1])
-
     
     last = data[i, (-len(data[i, :, 0]) // 10):, 1]
+    print(last.mean())
     if last.max() - last.min() < 0.0001:
         plt.plot(data[i, ::5, 0], np.repeat(last.mean(), len(data[i, ::5, 0])))
         plt.text(0, last.mean(), np.round(last.mean(), 4))
@@ -72,7 +73,7 @@ for i in range(5):
     plt.text(0, data[i, :, 1].mean(), np.round(data[i, :, 1].mean(), 4))
 plt.xlabel(meta[0][1][0])
 plt.ylabel(meta[0][1][1])
-plt.legend(alltext)
+plt.legend(alltext, bbox_to_anchor=(0.95, 0.8))
 
 plt.savefig('ocp.png')
 plt.show()
