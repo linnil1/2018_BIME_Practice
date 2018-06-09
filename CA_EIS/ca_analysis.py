@@ -40,26 +40,24 @@ def save_load():
 
 meta, data = save_load()
 
-"""
-plt.title(meta[0]['method'] + " analysis with Cottrell Eqn")
-
 # number = 5
+plt.title(meta[0]['method'] + " analysis with Cottrell Eqn")
+plt.xlabel("1 / sqrt({})".format(meta[0]['cols'][0]))
+plt.ylabel(meta[0]['cols'][1])
+
 for i in  range(5):
     n = 0
     plt.plot(1. / np.sqrt(data[i][n:, 0]), data[i][n:, 1], 'o-', label=meta[i]['name'].replace('mm', 'mM'))
 
-plt.xlabel("1 / sqrt({})".format(meta[0]['cols'][0]))
-plt.ylabel(meta[0]['cols'][1])
 plt.legend()
 plt.savefig("ca_analysis_1.png")
 plt.show()
-"""
 
 
+# number = 5
 plt.figure(figsize=(12, 9))
 plt.subplots_adjust(left=0.07, right=0.97,top=0.92, bottom=0.05, wspace=0.25)
 plt.suptitle(meta[0]['method'] + " analysis with Cottrell Eqn")
-# number = 5
 
 allax = plt.subplot(2, 3, 6)
 plt.title("all")
@@ -79,6 +77,7 @@ for i in  range(5):
              horizontalalignment='right',
              verticalalignment='bottom',
              transform=plt.gca().transAxes)
+    print(text)
     plt.plot(x, y, 'o', label="original data")
     plt.plot(x, fit_y, label="fit line")
 
