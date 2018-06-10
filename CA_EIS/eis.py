@@ -106,7 +106,6 @@ def save_load():
 meta, data = save_load()
 
 # number = 6
-"""
 plt.figure(figsize=(16, 8))
 plt.title("Nyquist Plot of " + meta[0]['method'])
 plt.subplots_adjust(left=0.07, right=0.97,top=0.92, bottom=0.05, wspace=0.25)
@@ -137,7 +136,6 @@ ax.set_zlabel("log ({})".format(meta[0]['cols'][0]))
 plt.gca().invert_yaxis()
 plt.legend()
 # plt.savefig("eis_3d.png")
-"""
 
 # number = 6
 plt.figure(figsize=(16, 8))
